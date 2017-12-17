@@ -5,15 +5,16 @@ include $(REQUIRE_TOOLS)/driver.makefile
 
 APP:=tsclib
 APPDB:=$(APP)/Db
-APPSRC:=$(APP)/lib
+APPSRC:=lib
+APPINC:=include	
 
 
 USR_INCLUDES += -I$(where_am_I)/$(APPSRC)
-USR_INCLUDES += -I$(where_am_I)/$(APP)/include
+USR_INCLUDES += -I$(where_am_I)/$(APPINC)
 
-# USR_CFLAGS   += -Wno-unused-variable
-# USR_CFLAGS   += -Wno-unused-function
-# USR_CFLAGS   += -Wno-unused-but-set-variable
+USR_CFLAGS   += -Wno-unused-variable
+USR_CFLAGS   += -Wno-unused-function
+USR_CFLAGS   += -Wno-unused-but-set-variable
 # USR_CPPFLAGS += -Wno-unused-variable
 # USR_CPPFLAGS += -Wno-unused-function
 # USR_CPPFLAGS += -Wno-unused-but-set-variable
@@ -31,13 +32,13 @@ USR_INCLUDES += -I$(where_am_I)/$(APP)/include
 # DBDINC_DEPS = $(subst .c,$(DEP), $(DBDINC_SRCS:$(APPSRC)/%=%))
 
 
-HEADERS += $(APP)/include/tsculib.h
-HEADERS += $(APP)/include/tscioctl.h
-# HEADERS += $(DBDINC_HDRS)
-
+#HEADERS += $(APPINC)/tsculib.h
+#HEADERS += $(APPINC)/tscioctl.h
+HEADERS += $(where_am_I)/include/tsculib.h
+HEADERS += $(where_am_I)/include/tscioctl.h
 
 SOURCES += $(APPSRC)/tsculib.c
-SOURCES += $(APPSRC)/clilib.c.c
+SOURCES += $(APPSRC)/clilib.c
 SOURCES += $(APPSRC)/tstlib.c
 SOURCES += $(APPSRC)/pev791xlib.c
 
