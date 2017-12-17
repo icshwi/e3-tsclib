@@ -39,8 +39,11 @@ HEADERS += $(where_am_I)/include/tscioctl.h
 
 SOURCES += $(APPSRC)/tsculib.c
 SOURCES += $(APPSRC)/clilib.c
-SOURCES += $(APPSRC)/tstlib.c
+SOURCES += $(APPSRC)/mtca4rtmlib.c
+SOURCES += $(APPSRC)/ponmboxlib.c
 SOURCES += $(APPSRC)/pev791xlib.c
+SOURCES += $(APPSRC)/tstlib.c
+
 
 # SOURCES += $(APPSRC)/calcUtil.c
 # SOURCES += $(APPSRC)/myFreeListLib.c
