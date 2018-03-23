@@ -6,7 +6,7 @@ include $(REQUIRE_TOOLS)/driver.makefile
 APP:=tsclib
 APPDB:=$(APP)/Db
 APPSRC:=lib
-APPINC:=include	
+APPINC:=include
 
 
 USR_INCLUDES += -I$(where_am_I)/$(APPSRC)
@@ -22,7 +22,7 @@ SOURCES += $(APPSRC)/tsculib.c
 SOURCES += $(APPSRC)/clilib.c
 SOURCES += $(APPSRC)/mtca4rtmlib.c
 SOURCES += $(APPSRC)/ponmboxlib.c
-SOURCES += $(APPSRC)/pev791xlib.c
+SOURCES += $(APPSRC)/tscextlib.c
 SOURCES += $(APPSRC)/tstlib.c
 
 
