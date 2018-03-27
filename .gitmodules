@@ -4,5 +4,5 @@
 	ignore = dirty
 [submodule "tsclib"]
 	path = tsclib
-	url = https://bitbucket.org/europeanspallationsource/tsclib
+	url = https://gitlab.esss.lu.se/ioxos/tsc
 	ignore = all
