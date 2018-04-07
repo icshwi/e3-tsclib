@@ -1,7 +1,7 @@
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-include $(REQUIRE_TOOLS)/driver.makefile
+include $(E3_REQUIRE_TOOLS)/driver.makefile
 
 APP:=tsclib
 APPDB:=$(APP)/Db
@@ -26,3 +26,7 @@ SOURCES += $(APPSRC)/tscextlib.c
 SOURCES += $(APPSRC)/tstlib.c
 
 
+
+# db rule is the default in RULES_E3, so add the empty one
+
+db:

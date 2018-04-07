@@ -1,7 +1,3 @@
-[submodule "e3-env"]
-	path = e3-env
-	url = https://github.com/icshwi/e3-env
-	ignore = dirty
 [submodule "tsclib"]
 	path = tsclib
 	url = https://gitlab.esss.lu.se/ioxos/tsc
