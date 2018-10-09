@@ -1,10 +1,10 @@
 #
 EPICS_MODULE_NAME:=tsclib
-#EPICS_MODULE_TAG:=tags/v2.3.1
-EPICS_MODULE_TAG:=5ae665b
+EPICS_MODULE_TAG:=tags/v2.3.1
+#EPICS_MODULE_TAG:=5ae665b
 #
-#E3_MODULE_VERSION:=2.3.1
-E3_MODULE_VERSION:=5ae665b
+E3_MODULE_VERSION:=2.3.1
+#E3_MODULE_VERSION:=5ae665b
 
 
 # ONLY IF this module has the sequencer dependency. However,
