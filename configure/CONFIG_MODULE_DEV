@@ -1,8 +1,9 @@
 #
 EPICS_MODULE_NAME:=tsclib
-EPICS_MODULE_TAG:=tags/v1.4.5
+EPICS_MODULE_TAG:=tags/v2.3.1
 #
-E3_MODULE_VERSION:=1.4.5
+E3_MODULE_VERSION:=2.3.1
+
 
 
 # ONLY IF this module has the sequencer dependency. However,
@@ -18,7 +19,7 @@ E3_MODULE_SRC_PATH:=$(EPICS_MODULE_NAME)-dev
 E3_MODULE_MAKEFILE:=$(EPICS_MODULE_NAME).Makefile
 
 #export DEV_GIT_URL:="https://where your git repo"
-E3_MODULE_DEV_GITURL:="https://gitlab.esss.lu.se/ioxos/tsc"
+E3_MODULE_DEV_GITURL:="https://bitbucket.org/europeanspallationsource/tsc_driver"
 
 
 
