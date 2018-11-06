@@ -16,6 +16,7 @@ git config --global url."git@bitbucket.org:".insteadOf https://bitbucket.org/
 
 ```sh
 $ make init
+$ make patch
 $ make dkms_add
 $ make dkms_build
 $ make dkms_install
