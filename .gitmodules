@@ -1,4 +1,4 @@
 [submodule "tsclib"]
 	path = tsclib
 	url = https://bitbucket.org/europeanspallationsource/tsc_driver.git
-	ignore = dirty
+	ignore = all
