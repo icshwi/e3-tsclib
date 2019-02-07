@@ -1,7 +1,7 @@
 diff --git a/driver/tscdrvr.h b/driver/tscdrvr.h
 index 9e31f73..d0053db 100644
---- a/driver/tscdrvr.h
-+++ b/driver/tscdrvr.h
+--- driver/tscdrvr.h
++++ driver/tscdrvr.h
 @@ -48,7 +48,7 @@
  #ifndef _TSCDRVR
  #define _TSCDRVR
