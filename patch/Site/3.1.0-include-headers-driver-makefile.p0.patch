@@ -1,0 +1,22 @@
+diff --git driver/tscdrvr.h driver/tscdrvr.h
+index d1fb597..7793c63 100644
+--- driver/tscdrvr.h
++++ driver/tscdrvr.h
+@@ -48,7 +48,7 @@
+ #ifndef _TSCDRVR
+ #define _TSCDRVR
+ 
+-#include "../include/tscioctl.h"
++#include "tscioctl.h"
+ 
+ #define TSC_SHM_NUM  2                       /* number of SHM agents */
+ #define TSC_SHM1_IDX 0                       /* index of SHM1 agent  */
+@@ -104,7 +104,7 @@ struct tsc
+ #define TSC_MINOR_START              0       /* First minor number                   */
+ #define TSC_IRQ_NUM                 64       /* Number of interrupt source (4*16)    */
+ 
+-#include "../include/tsc.h"
++#include "tsc.h"
+ #include "ioctllib.h"
+ #include "tscklib.h"
+ 

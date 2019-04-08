@@ -13,9 +13,10 @@ dkms_add: conf
 
 
 setup:
-#	$(QUIET) $(SUDO2) 'echo KERNEL==\"uio*\", ATTR{name}==\"mrf-pci\", MODE=\"0666\" | tee  /etc/udev/rules.d/99-$(KMOD_NAME1).rules'
-#	$(QUIET) $(SUDO) /bin/udevadm control --reload-rules
-#	$(QUIET) $(SUDO) /bin/udevadm trigger
+	$(QUIET) $(SUDO2) 'echo KERNEL==\"*tsc_ctl_central0\" SUBSYSTEM==\"tsc_central\",  MODE=\"0666\" | tee  /etc/udev/rules.d/99-$(KMOD_NAME1).rules'
+	$(QUIET) $(SUDO2) 'echo KERNEL==\"*pon\", SUBSYSTEM==\"TSC_PON\"  MODE=\"0666\" | tee  /etc/udev/rules.d/99-$(KMOD_NAME2).rules'
+	$(QUIET) $(SUDO) /bin/udevadm control --reload-rules
+	$(QUIET) $(SUDO) /bin/udevadm trigger
 	$(QUIET) $(SUDO2) 'echo $(KMOD_NAME1) | tee /etc/modules-load.d/$(KMOD_NAME1).conf'
 	$(QUIET) $(SUDO2) 'echo $(KMOD_NAME2) | tee /etc/modules-load.d/$(KMOD_NAME2).conf'	
 	$(QUIET) $(SUDO) depmod --quick
@@ -24,11 +25,12 @@ setup:
 	$(QUIET) $(SUDO) modprobe -v $(KMOD_NAME1)
 	$(QUIET) $(SUDO) modprobe -v $(KMOD_NAME2)
 	$(QUIET) echo ""
-#	$(QUIET) echo ""
-#	$(QUIET) echo "It is OK to see \"E3/RULES_DKMS:37: recipe for target 'setup' failed\""
-#	$(QUIET) echo "---------------------------------------------------------------------"
-#	$(QUIET) -ls -l /dev/uio* 2>/dev/null
-#	$(QUIET) echo "---------------------------------------------------------------------"
+	$(QUIET) echo ""
+	$(QUIET) echo "It is OK to see \"E3/RULES_DKMS:37: recipe for target 'setup' failed\""
+	$(QUIET) echo "---------------------------------------------------------------------"
+	$(QUIET) -ls -l /dev/bus/bridge/tsc* 2>/dev/null
+	$(QUIET) -ls -l /dev/tsc/pon* 2>/dev/null
+	$(QUIET) echo "---------------------------------------------------------------------"
 
 
 
@@ -37,7 +39,8 @@ setup_clean:
 	$(QUIET) $(SUDO) modprobe -rv $(KMOD_NAME2)
 	$(SUDO) rm -f /etc/modules-load.d/$(KMOD_NAME1).conf
 	$(SUDO) rm -f /etc/modules-load.d/$(KMOD_NAME2).conf	
-#	$(SUDO) rm -f /etc/udev/rules.d/99-$(KMOD_NAME1).rules
+	$(SUDO) rm -f /etc/udev/rules.d/99-$(KMOD_NAME1).rules
+	$(SUDO) rm -f /etc/udev/rules.d/99-$(KMOD_NAME2).rules
 
 
 .PHONY: setup setup_clean
