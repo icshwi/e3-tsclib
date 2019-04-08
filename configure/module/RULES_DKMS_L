@@ -13,7 +13,7 @@ dkms_add: conf
 
 
 setup:
-	$(QUIET) $(SUDO2) 'echo KERNEL==\"*tsc_ctl_central0\" SUBSYSTEM==\"tsc_central\",  MODE=\"0666\" | tee  /etc/udev/rules.d/99-$(KMOD_NAME1).rules'
+	$(QUIET) $(SUDO2) 'echo SUBSYSTEM==\"pci\", ATTR{subsystem_vendor}==\"0x1234\", ATTR{device}==\"0x1003\", RUN+=\"/bin/chmod a+rw %S%p/resource0\" | tee  /etc/udev/rules.d/99-$(KMOD_NAME1).rules'
 	$(QUIET) $(SUDO2) 'echo KERNEL==\"*pon\", SUBSYSTEM==\"TSC_PON\"  MODE=\"0666\" | tee  /etc/udev/rules.d/99-$(KMOD_NAME2).rules'
 	$(QUIET) $(SUDO) /bin/udevadm control --reload-rules
 	$(QUIET) $(SUDO) /bin/udevadm trigger
