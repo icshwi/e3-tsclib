@@ -25,8 +25,7 @@ SOURCES += $(APPSRC)/ponmboxlib.c
 SOURCES += $(APPSRC)/tscextlib.c
 SOURCES += $(APPSRC)/tstlib.c
 
-
-#build TscMon executalbe
+#build and install TscMon executalbe
 BINS += $(TSCMON)
 
 TEMP_PATH      := $(where_am_I)O.$(EPICSVERSION)_$(T_A)
@@ -58,20 +57,17 @@ TSCMON_SRC += $(TSCMON_SRC_DIR)/timer.c
 TSCMON_SRC += $(TSCMON_SRC_DIR)/tst.c
 TSCMON_SRC += $(TSCMON_SRC_DIR)/TscMon.c
 
-TSCMON_OBJ := $(TSCMON_SRC:.c=.o)
+# driver.makefile changes folder to $(T_A) and default rules assume SRC is ../ and all .o are complied to PWD
+# therefore source paths are stripped off of folder name and converted to .o extension
+TSCMON_OBJ := $(notdir $(TSCMON_SRC:.c=.o))
 
-# this variable is needed because default %.o:%.c rule builds .o files in $(TEMP_PATH) instead of $(TSCMON_OBJ).
-# in this case linking of the final executable requires actual paths to object files. Unfortunately this solution
-# does not monitor prerequisites in a correct way
-
-# Other solution would be to override default compile rule to build all objects in $(TSCMON_OBJ), but this creates 
-# other problems in EPICS/E3 build system
-
-TSCMON_LNK := $(addprefix $(TEMP_PATH)/,$(notdir $(TSCMON_OBJ)))
+# and following rules are prepared to build .o and make final linking
+%.o: $(TSCMON_SRC_DIR)/%.c
+	$(COMPILE.c) -o $@ -c $<
 
 $(TSCMON): $(TSCMON_OBJ)
 	mkdir -p $(dir $@)
-	$(LINK.c) -Wall -L$(TEMP_PATH) -o $(TSCMON) $(TSCMON_LNK) -l$(APP) -lrt -lm
+	$(LINK.c) -Wall -L$(TEMP_PATH) -o $(TSCMON) $(TSCMON_OBJ) -l$(APP) -lrt -lm
 
 # db rule is the default in RULES_E3, so add the empty one
 db:
