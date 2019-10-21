@@ -1,6 +1,6 @@
-EPICS_MODULE_NAME:=tsclib
+EPICS_MODULE_NAME:=tsc
 #
-EPICS_MODULE_TAG:=tags/v3.3.0
+EPICS_MODULE_TAG:=generic_scope
 #
 E3_MODULE_VERSION:=develop
 #
@@ -10,7 +10,7 @@ E3_MODULE_SRC_PATH:=$(EPICS_MODULE_NAME)-dev
 #
 E3_MODULE_MAKEFILE:=$(EPICS_MODULE_NAME).Makefile
 #
-E3_MODULE_DEV_GITURL:="https://bitbucket.org/europeanspallationsource/tsc_driver"
+E3_MODULE_DEV_GITURL:="https://gitlab.esss.lu.se/ioxos/tsc.git"
 #
 -include $(TOP)/configure/CONFIG_OPTIONS
 # The definitions shown below can also be placed in an untracked CONFIG_MODULE*.local
