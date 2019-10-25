@@ -7,3 +7,4 @@ tsclib
 *_old/
 .\#*
 tsclib/tsclib.Makefile
+bin/

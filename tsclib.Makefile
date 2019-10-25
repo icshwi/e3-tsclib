@@ -17,8 +17,8 @@
 # 
 # Author  : Jeong Han Lee
 # email   : jeonghan.lee@gmail.com
-# Date    : Monday, October 21 22:09:54 CEST 2019
-# version : 0.0.1
+# Date    : Friday, October 25 14:37:47 CEST 2019
+# version : 0.0.2
 #
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -29,30 +29,33 @@ include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 APP:=
 APPSRC:=lib
 APPINC:=include
+TSCMON:=src/TscMon
 
 USR_INCLUDES += -I$(where_am_I)/$(APPINC)
 
-HEADERS  = $(wildcard $(where_am_I)/include/*.h)
+HEADERS     += $(wildcard $(where_am_I)/include/*.h)
 
 # libadc
-SOURCES += $(APPSRC)/adc3112lib.c
-SOURCES += $(APPSRC)/fscope3112lib.c
-SOURCES += $(APPSRC)/adc3110lib.c
-SOURCES += $(APPSRC)/gscope3110lib.c 
+ADCLIB_SRCS += $(APPSRC)/adc3112lib.c
+ADCLIB_SRCS += $(APPSRC)/fscope3112lib.c
+ADCLIB_SRCS += $(APPSRC)/adc3110lib.c
+ADCLIB_SRCS += $(APPSRC)/gscope3110lib.c 
 # libtsc
-SOURCES += $(APPSRC)/tsculib.c
-SOURCES += $(APPSRC)/clilib.c
-SOURCES += $(APPSRC)/tscextlib.c
-SOURCES += $(APPSRC)/tstlib.c
-SOURCES += $(APPSRC)/ponmboxlib.c
-SOURCES += $(APPSRC)/mtca4amclib.c
-SOURCES += $(APPSRC)/mtca4rtmlib.c
-SOURCES += $(APPSRC)/pca9539lib.c
-SOURCES += $(APPSRC)/rsp1461lib.c 
-SOURCES += $(APPSRC)/rdt1465lib.c
-SOURCES += $(APPSRC)/rcc1466lib.c
+TSCLIB_SRCS += $(APPSRC)/tsculib.c
+TSCLIB_SRCS += $(APPSRC)/clilib.c
+TSCLIB_SRCS += $(APPSRC)/tscextlib.c
+TSCLIB_SRCS += $(APPSRC)/tstlib.c
+TSCLIB_SRCS += $(APPSRC)/ponmboxlib.c
+TSCLIB_SRCS += $(APPSRC)/mtca4amclib.c
+TSCLIB_SRCS += $(APPSRC)/mtca4rtmlib.c
+TSCLIB_SRCS += $(APPSRC)/pca9539lib.c
+TSCLIB_SRCS += $(APPSRC)/rsp1461lib.c 
+TSCLIB_SRCS += $(APPSRC)/rdt1465lib.c
+TSCLIB_SRCS += $(APPSRC)/rcc1466lib.c
 
 
+SOURCES += $(ADCLIB_SRCS)
+SOURCES += $(TSCLIB_SRCS)
 
 
 .PHONY: vlibs db
@@ -60,3 +63,4 @@ SOURCES += $(APPSRC)/rcc1466lib.c
 db:
 
 vlibs:
+
