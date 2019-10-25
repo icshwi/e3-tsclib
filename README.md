@@ -10,22 +10,41 @@ One needs to have the ESS bitbucket accout. **make init** will ask the bitbucket
 git config --global url."git@bitbucket.org:".insteadOf https://bitbucket.org/
 ```
 
+## Initialize repository
+```
+e3-tsclib (master)$ make init
+```
+
+## TscMon and SemeCalibration within `EPICS_HOST_ARCH`
+
+This is *only* for the heavily development environment. The production environment should has its own version within Linux Images.
+
+```sh
+e3-tsclib (master)$ make tsc-build
+e3-tsclib (master)$ make tsc-install
+e3-tsclib (master)$ tree bin/
+bin/
+└── [jhlee    4.0K]  linux-x86_64
+    ├── [jhlee    448K]  SmemCalibration
+    └── [jhlee    448K]  TscMon
+
+```
+
 
 ## Kernel module (tsc.ko and pon.ko) can be installed via DKMS
 
 
 ```sh
-$ make init
-$ make dkms_add
-$ make dkms_build
-$ make dkms_install
+e3-tsclib (master)$ make dkms_add
+e3-tsclib (master)$ make dkms_build
+e3-tsclib (master)$ make dkms_install
 ```
 
 In order to remove them
 
 ```sh
-$ make dkms_uninstall
-$ make dkms_remove
+e3-tsclib (master)$ make dkms_uninstall
+e3-tsclib (master)$ make dkms_remove
 ```
 
 ## Kernel modules configuration
@@ -34,13 +53,13 @@ $ make dkms_remove
 * Remove and load the kernel module with modprobe
 
 ```sh
-$ make setup
+e3-tsclib (master)$ make setup
 ```
 
 In order to clean the configuration,
 
 ```sh
-$ make setup_clean
+e3-tsclib (master)$ make setup_clean
 ```
 
 ## Notice
