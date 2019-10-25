@@ -1,0 +1,8 @@
+digraph tsclib {
+node [shape=record];
+base [label="base 7.0.3"]
+require [label="require 3.1.2"]
+tsclib [label="tsclib 4.0.0"]
+base -> require ->  tsclib 
+} 
+
